@@ -21,10 +21,10 @@
     <%= form.text_area :body %>
   </div>
 
-  <div class="field">
-    <%= form.label :tags %>
-    <%= form.text_area :tags %>
-  </div>
+  <% ['development', 'music', 'hiking'].each do |tag| -%>
+    <%= label_tag "post[tags][#{tag}]", tag %>
+    <%= check_box_tag "post[tags][#{tag}]", tag, @post.tags&.any?(tag) %>
+  <% end -%>
 
   <div class="actions">
     <%= form.submit %>
